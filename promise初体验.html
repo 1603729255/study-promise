@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="containaer">
+    <button id="btn">点击</button>
+  </div>
+  <script>
+    function rand(m, n) {
+      return Math.ceil(Math.random() * (n - m + 1)) + m - 1
+    }
+    const btn = document.querySelector("#btn")
+    btn.addEventListener('click', function () {
+      /* 
+        实例化 接受一个函数 
+        函数接受两个参数 函数类型 resolve, reject
+      */
+      const p =new Promise((resolve, reject) => {
+        setTimeout(() => {
+          let n = rand(1, 100)
+          if (n <= 30) {
+            resolve(n)//将promise的状态设置为成功
+          } else {
+            reject(n)//将promise的状态设置为失败
+          }
+        }, 1000);
+      })
+
+      /* 
+        then接受成功和失败的状态 
+      */
+
+      p.then(
+        (value) => { console.log('成功',value);},
+        (reason) => {console.log('失败',reason); }
+      )
+    })
+  </script>
+</body>
+
+</html>
