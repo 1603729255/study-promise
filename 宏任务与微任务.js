@@ -12,7 +12,7 @@ setTimeout(function () {
   }).then(function () {
     console.log("5");
   });
-});
+},1000);
 // 微任务
 process.nextTick(function () {
   console.log("6");
@@ -37,7 +37,7 @@ setTimeout(function () {
   }).then(function () {
     console.log("12");
   });
-});
+},0);
 // 176
 
 
